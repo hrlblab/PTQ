@@ -75,6 +75,34 @@ We introduce **MedPTQ**, an open-source toolkit for real post-training quantizat
 - [Installation Guide](documents/INSTALL.md)
 - [Usage Tutorial](documents/USAGE.md)
 
+## Performance
+
+### BTCV (N = 20, C = 13)
+
+| Model     | Model Size (MB) – FP32 | Model Size (MB) – INT8 | Latency (ms) – FP32 | Latency (ms) – INT8 | mDSC – FP32 | mDSC – INT8 |
+|-----------|------------------------:|------------------------:|--------------------:|--------------------:|------------:|------------:|
+| U-Net     | 23.11                   | 6.61                    | 2.62                | 1.05                | 0.822       | 0.822       |
+| TransUNet | 351.85                  | 91.90                   | 4.09                | 1.74                | 0.816       | 0.816       |
+
+### Whole Brain Segmentation (N = 50, C = 133)
+
+| Model | Model Size (MB) – FP32 | Model Size (MB) – INT8 | Latency (ms) – FP32 | Latency (ms) – INT8 | mDSC – FP32 | mDSC – INT8 |
+|------|------------------------:|------------------------:|--------------------:|--------------------:|------------:|------------:|
+| UNesT | 349.41                 | 96.72                   | 5.59                | 2.72                | 0.702       | 0.701       |
+
+### TotalSegmentator V2 (N = 200, C = 104)
+
+| Model      | Model Size (MB) – FP32 | Model Size (MB) – INT8 | Latency (ms) – FP32 | Latency (ms) – INT8 | mDSC – FP32 | mDSC – INT8 |
+|------------|------------------------:|------------------------:|--------------------:|--------------------:|------------:|------------:|
+| nnU-Net    | 107.84                  | 33.97                   | 2.99                | 1.25                | 0.901       | 0.895       |
+| SwinUNETR  | 247.96                  | 70.18                   | 9.85                | 3.59                | 0.878       | 0.877       |
+| SegResNet  | 170.44                  | 50.29                   | 5.14                | 2.06                | 0.882       | 0.879       |
+| VISTA3D    | 264.57                  | 71.18                   | 4.59                | 1.93                | 0.893       | 0.891       |
+
+**Quantization results of SOTA medical segmentation models.** We evaluate MedPTQ on seven models (U-Net, TransUNet, UNesT, nnU-Net, SwinUNETR, SegResNet, VISTA3D) across three datasets with different numbers of samples (N) and classes (C): BTCV (N = 20, C = 13), Whole Brain Segmentation (N = 50, C = 133), and TotalSegmentator V2 (N = 200, C = 104). All models are compiled into TensorRT engines for both FP32 and INT8; we report **Model Size (MB)**, **Latency (ms)**, and **mDSC**. Compared with FP32, INT8 consistently compresses model size by **3.17×–3.83×** and reduces latency by **2.06×–2.74×**, while maintaining accuracy (absolute ΔmDSC ≤ 0.006).
+
+
+
 ## Acknowledgments
 
 This research was supported by NIH R01DK135597 (Huo), DoD HT9425-23-1-0003 (HCY), NSF 2434229 (Huo), and KPMP Glue Grant. This work was also supported by Vanderbilt Seed Success Grant, Vanderbilt Discovery Grant, and VISE Seed Grant. This project was supported by The Leona M. and Harry B. Helmsley Charitable Trust grant G-1903-03793 and G-2103-05128. This research was also supported by NIH grants R01EB033385, R01DK132338, REB017230, R01MH125931, and NSF 2040462. We extend gratitude to NVIDIA for their support by means of the NVIDIA hardware grant. This work was also supported by NSF NAIRR Pilot Award NAIRR240055.
