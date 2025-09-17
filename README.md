@@ -72,6 +72,8 @@ We introduce **MedPTQ**, an open-source toolkit for real post-training quantizat
 
 ## Getting Started
 
+- [Installation Guide](documents/INSTALL.md)
+- [Usage Tutorial](documents/USAGE.md)
 
 ## Acknowledgments
 
