@@ -10,6 +10,7 @@
 <div align="center">
 
 [![MedPTQ Models](https://img.shields.io/badge/MedPTQ-Models-009F76.svg)](#medptq-models)
+[![MedPTQ Paper](https://img.shields.io/badge/MedPTQ-Paper-009F76.svg)](https://arxiv.org/abs/2501.17343)
 [![GitHub Repo stars](https://img.shields.io/github/stars/hrlblab/PTQ?style=social)](https://github.com/hrlblab/PTQ/stargazers)
 
 
