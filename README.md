@@ -75,31 +75,114 @@ We introduce **MedPTQ**, an open-source toolkit for real post-training quantizat
 - [Installation Guide](documents/INSTALL.md)
 - [Usage Tutorial](documents/USAGE.md)
 
+
+
 ## Performance
 
-### BTCV (N = 20, C = 13)
+#### BTCV (N = 20, C = 13)
+<table>
+  <thead>
+    <tr>
+      <th>Model</th>
+      <th colspan="2">Model Size (MB)</th>
+      <th colspan="2">Latency (ms)</th>
+      <th colspan="2">mDSC</th>
+    </tr>
+    <tr>
+      <th></th>
+      <th>FP32</th><th>INT8</th>
+      <th>FP32</th><th>INT8</th>
+      <th>FP32</th><th>INT8</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>U-Net</td>
+      <td align="right">23.11</td><td align="right">6.61</td>
+      <td align="right">2.62</td><td align="right">1.05</td>
+      <td align="right">0.822</td><td align="right">0.822</td>
+    </tr>
+    <tr>
+      <td>TransUNet</td>
+      <td align="right">351.85</td><td align="right">91.90</td>
+      <td align="right">4.09</td><td align="right">1.74</td>
+      <td align="right">0.816</td><td align="right">0.816</td>
+    </tr>
+  </tbody>
+</table>
 
-| Model     | Model Size (MB) – FP32 | Model Size (MB) – INT8 | Latency (ms) – FP32 | Latency (ms) – INT8 | mDSC – FP32 | mDSC – INT8 |
-|-----------|------------------------:|------------------------:|--------------------:|--------------------:|------------:|------------:|
-| U-Net     | 23.11                   | 6.61                    | 2.62                | 1.05                | 0.822       | 0.822       |
-| TransUNet | 351.85                  | 91.90                   | 4.09                | 1.74                | 0.816       | 0.816       |
+#### Whole Brain Segmentation (N = 50, C = 133)
+<table>
+  <thead>
+    <tr>
+      <th>Model</th>
+      <th colspan="2">Model Size (MB)</th>
+      <th colspan="2">Latency (ms)</th>
+      <th colspan="2">mDSC</th>
+    </tr>
+    <tr>
+      <th></th>
+      <th>FP32</th><th>INT8</th>
+      <th>FP32</th><th>INT8</th>
+      <th>FP32</th><th>INT8</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>UNesT</td>
+      <td align="right">349.41</td><td align="right">96.72</td>
+      <td align="right">5.59</td><td align="right">2.72</td>
+      <td align="right">0.702</td><td align="right">0.701</td>
+    </tr>
+  </tbody>
+</table>
 
-### Whole Brain Segmentation (N = 50, C = 133)
+#### TotalSegmentator V2 (N = 200, C = 104)
+<table>
+  <thead>
+    <tr>
+      <th>Model</th>
+      <th colspan="2">Model Size (MB)</th>
+      <th colspan="2">Latency (ms)</th>
+      <th colspan="2">mDSC</th>
+    </tr>
+    <tr>
+      <th></th>
+      <th>FP32</th><th>INT8</th>
+      <th>FP32</th><th>INT8</th>
+      <th>FP32</th><th>INT8</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>nnU-Net</td>
+      <td align="right">107.84</td><td align="right">33.97</td>
+      <td align="right">2.99</td><td align="right">1.25</td>
+      <td align="right">0.901</td><td align="right">0.895</td>
+    </tr>
+    <tr>
+      <td>SwinUNETR</td>
+      <td align="right">247.96</td><td align="right">70.18</td>
+      <td align="right">9.85</td><td align="right">3.59</td>
+      <td align="right">0.878</td><td align="right">0.877</td>
+    </tr>
+    <tr>
+      <td>SegResNet</td>
+      <td align="right">170.44</td><td align="right">50.29</td>
+      <td align="right">5.14</td><td align="right">2.06</td>
+      <td align="right">0.882</td><td align="right">0.879</td>
+    </tr>
+    <tr>
+      <td>VISTA3D</td>
+      <td align="right">264.57</td><td align="right">71.18</td>
+      <td align="right">4.59</td><td align="right">1.93</td>
+      <td align="right">0.893</td><td align="right">0.891</td>
+    </tr>
+  </tbody>
+</table>
 
-| Model | Model Size (MB) – FP32 | Model Size (MB) – INT8 | Latency (ms) – FP32 | Latency (ms) – INT8 | mDSC – FP32 | mDSC – INT8 |
-|------|------------------------:|------------------------:|--------------------:|--------------------:|------------:|------------:|
-| UNesT | 349.41                 | 96.72                   | 5.59                | 2.72                | 0.702       | 0.701       |
+**Quantization results of SOTA medical segmentation models.** We evaluate MedPTQ on seven models (U-Net, TransUNet, UNesT, nnU-Net, SwinUNETR, SegResNet, VISTA3D) across three datasets with different numbers of samples (N) and classes (C): BTCV (N = 20, C = 13), Whole Brain Segmentation (N = 50, C = 133), and TotalSegmentator V2 (N = 200, C = 104). All models are compiled to TensorRT for both FP32 and INT8; we report **Model Size (MB)**, **Latency (ms)**, and **mDSC**. Compared with FP32, INT8 consistently compresses model size by **3.17×–3.83×** and reduces latency by **2.06×–2.74×**, while maintaining accuracy (absolute ΔmDSC ≤ 0.006).
 
-### TotalSegmentator V2 (N = 200, C = 104)
-
-| Model      | Model Size (MB) – FP32 | Model Size (MB) – INT8 | Latency (ms) – FP32 | Latency (ms) – INT8 | mDSC – FP32 | mDSC – INT8 |
-|------------|------------------------:|------------------------:|--------------------:|--------------------:|------------:|------------:|
-| nnU-Net    | 107.84                  | 33.97                   | 2.99                | 1.25                | 0.901       | 0.895       |
-| SwinUNETR  | 247.96                  | 70.18                   | 9.85                | 3.59                | 0.878       | 0.877       |
-| SegResNet  | 170.44                  | 50.29                   | 5.14                | 2.06                | 0.882       | 0.879       |
-| VISTA3D    | 264.57                  | 71.18                   | 4.59                | 1.93                | 0.893       | 0.891       |
-
-**Quantization results of SOTA medical segmentation models.** We evaluate MedPTQ on seven models (U-Net, TransUNet, UNesT, nnU-Net, SwinUNETR, SegResNet, VISTA3D) across three datasets with different numbers of samples (N) and classes (C): BTCV (N = 20, C = 13), Whole Brain Segmentation (N = 50, C = 133), and TotalSegmentator V2 (N = 200, C = 104). All models are compiled into TensorRT engines for both FP32 and INT8; we report **Model Size (MB)**, **Latency (ms)**, and **mDSC**. Compared with FP32, INT8 consistently compresses model size by **3.17×–3.83×** and reduces latency by **2.06×–2.74×**, while maintaining accuracy (absolute ΔmDSC ≤ 0.006).
 
 
 
