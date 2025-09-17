@@ -18,6 +18,10 @@
 
 We introduce **MedPTQ**, an open-source toolkit for real post-training quantization (PTQ) that implements true 8-bit (INT8) inference on state-of-the-art (SOTA) 3D medical segmentation models
 
+## News
+
+- **[2025-09-17]** 🔥 New — INT8 **U-Net** and **TransUNet** quantized engine have been released (see [MedPTQ Models](#medptq-models)).
+
 ## MedPTQ Models
 
 ## Acknowledgments
