@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="documents/fig_ptq.png" alt="MedPTQ" width=80%>
+  <img src="documents/fig_ptq.png" alt="MedPTQ" width=70%>
 </div>
 
 ## Acknowledgments
