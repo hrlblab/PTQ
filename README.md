@@ -65,11 +65,10 @@ We introduce **MedPTQ**, an open-source toolkit for real post-training quantizat
 </table>
 
 <!-- Progress -->
-<p><strong>Release progress:</strong> 2/7</p>
-<div style="height:10px;background:#e5e7eb;border-radius:6px;overflow:hidden;max-width:420px;">
-  <div style="width:28.6%;height:100%;background:#009F76;"></div>
-</div>
-<p><sub>Released: U-Net, TransUNet • Coming soon: UNesT, VISTA3D, SegResNet, SwinUNETR, nnU-Net</sub></p>
+**Release progress:** 2/7  
+<progress value="2" max="7"></progress>  
+<sub>Released: U-Net, TransUNet • Coming soon: UNesT, VISTA3D, SegResNet, SwinUNETR, nnU-Net</sub>
+
 
 
 ## Acknowledgments
