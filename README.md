@@ -1,6 +1,16 @@
 <div align="center">
-  <img src="documents/fig_ptq.png" alt="MedPTQ" width=70%>
+  <img src="documents/fig_ptq.png" alt="MedPTQ overview" width=70%>
 </div>
+
+<h2><p align="center">
+  MedPTQ: A Practical Toolkit for Real Post-Training Quantization<br>
+  in 3D Medical Image Segmentation
+</p></h2>
+
+
+We introduce **MedPTQ**, an open-source toolkit for real post-training quantization (PTQ) that implements true 8-bit (INT8) inference on state-of-the-art (SOTA) 3D medical segmentation models
+
+## MedPTQ Models
 
 ## Acknowledgments
 
