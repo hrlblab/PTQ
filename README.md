@@ -22,6 +22,13 @@ We introduce **MedPTQ**, an open-source toolkit for real post-training quantizat
 
 - **[2025-09-17]** 🔥 New — INT8 **U-Net** and **TransUNet** quantized engine have been released (see [MedPTQ Models](#medptq-models)).
 
+## Method
+<div align="center">
+  <img src="documents/fig_workflow.png" alt="MedPTQ overview" width=80%>
+</div>
+
+**Overview of MedPTQ.** The top row illustrates the original FP32 pipeline, where both activation $X$ and weight $W$ are in full precision and pass through Conv–BN–ReLU sequentially. The middle row shows the simulated quantization stage: `QuantizeLinear` and `DequantizeLinear` nodes are inserted after both activations and weights to simulate INT8 quantization semantics, while the model still executes in FP32. The bottom row demonstrates the real INT8 TensorRT engine, where TensorRT fuses FP32 weights with their associated `QuantizeLinear` into INT8 weights, and merges activation `DequantizeLinear`, weight `DequantizeLinear` convolution, BN, and ReLU into a single fused convolution block. This fusion enables optimized INT8 convolution kernels, reducing memory traffic and improving efficiency while preserving accuracy.
+
 ## MedPTQ Models
 
 ## Acknowledgments
