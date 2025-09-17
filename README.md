@@ -184,8 +184,18 @@ We introduce **MedPTQ**, an open-source toolkit for real post-training quantizat
 **Quantization results of SOTA medical segmentation models.** We evaluate MedPTQ on seven models (U-Net, TransUNet, UNesT, nnU-Net, SwinUNETR, SegResNet, VISTA3D) across three datasets with different numbers of samples (N) and classes (C): BTCV (N = 20, C = 13), Whole Brain Segmentation (N = 50, C = 133), and TotalSegmentator V2 (N = 200, C = 104). All models are compiled to TensorRT for both FP32 and INT8; we report **Model Size (MB)**, **Latency (ms)**, and **mDSC**. Compared with FP32, INT8 consistently compresses model size by **3.17×–3.83×** and reduces latency by **2.06×–2.74×**, while maintaining accuracy (absolute ΔmDSC ≤ 0.006).
 
 
+## Citation
 
+If you find **MedPTQ** useful, please cite:
 
+```bibtex
+@article{qu2025post,
+  title={Post-Training Quantization for 3D Medical Image Segmentation: A Practical Study on Real Inference Engines},
+  author={Qu, Chongyu and Zhao, Ritchie and Yu, Ye and Liu, Bin and Yao, Tianyuan and Zhu, Junchao and Landman, Bennett A and Tang, Yucheng and Huo, Yuankai},
+  journal={arXiv preprint arXiv:2501.17343},
+  year={2025}
+}
+```
 ## Acknowledgments
 
 This research was supported by NIH R01DK135597 (Huo), DoD HT9425-23-1-0003 (HCY), NSF 2434229 (Huo), and KPMP Glue Grant. This work was also supported by Vanderbilt Seed Success Grant, Vanderbilt Discovery Grant, and VISE Seed Grant. This project was supported by The Leona M. and Harry B. Helmsley Charitable Trust grant G-1903-03793 and G-2103-05128. This research was also supported by NIH grants R01EB033385, R01DK132338, REB017230, R01MH125931, and NSF 2040462. We extend gratitude to NVIDIA for their support by means of the NVIDIA hardware grant. This work was also supported by NSF NAIRR Pilot Award NAIRR240055.
